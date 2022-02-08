@@ -1,6 +1,6 @@
 # Личный проект «Что посмотреть»
 
-* Студент: [Алексей Носиков](https://up.htmlacademy.ru/react/9/user/785179).
+* Студент: [Алексей Носиков](https://htmlacademy.ru/profile/id785179).
 * Наставник: [Артём Рудов](https://htmlacademy.ru/profile/id345377).
 
 ---
