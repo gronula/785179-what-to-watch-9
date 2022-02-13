@@ -5,7 +5,7 @@ type Poster = {
   width?: number;
 }
 type SmallFilmCardProps = {
-  className: string;
+  className?: string;
   href: string;
   poster: Poster;
   title: string;
@@ -13,7 +13,7 @@ type SmallFilmCardProps = {
 
 function SmallFilmCard(
   {
-    className,
+    className = '',
     href,
     poster,
     title,
