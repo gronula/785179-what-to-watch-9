@@ -1,8 +1,8 @@
-import Main from '../main/main';
+import MainView from '../main-view/main-view';
 
 function App(): JSX.Element {
   return (
-    <Main />
+    <MainView />
   );
 }
 

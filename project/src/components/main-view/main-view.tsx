@@ -225,7 +225,7 @@ const filmsList = [
   },
 ];
 
-function Main(): JSX.Element {
+function MainView(): JSX.Element {
   return (
     <React.Fragment>
       <SVGSprite />
@@ -362,4 +362,4 @@ function Main(): JSX.Element {
   );
 }
 
-export default Main;
+export default MainView;
