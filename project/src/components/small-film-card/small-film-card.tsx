@@ -1,13 +1,13 @@
-type PosterType = {
+type Poster = {
   alt: string;
-  height: number;
+  height?: number;
   src: string;
-  width: number;
+  width?: number;
 }
 type SmallFilmCardProps = {
   className: string;
   href: string;
-  poster: PosterType;
+  poster: Poster;
   title: string;
 }
 
@@ -25,8 +25,8 @@ function SmallFilmCard(
         <img
           src={poster.src}
           alt={poster.alt}
-          width={poster.width}
-          height={poster.height}
+          width={poster.width || 280}
+          height={poster.height || 175}
         />
       </div>
 
