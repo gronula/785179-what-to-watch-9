@@ -1,6 +1,5 @@
 import React from 'react';
 import SmallFilmCard from '../small-film-card/small-film-card';
-import SVGSprite from '../svg-sprite/svg-sprite';
 
 const filmsList = [
   {
@@ -187,9 +186,7 @@ const filmsList = [
 
 function MainView(): JSX.Element {
   return (
-    <React.Fragment>
-      <SVGSprite />
-
+    <>
       <section className="film-card">
         <div className="film-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -318,7 +315,7 @@ function MainView(): JSX.Element {
           </div>
         </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
