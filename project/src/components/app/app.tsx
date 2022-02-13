@@ -1,8 +1,20 @@
 import MainView from '../main-view/main-view';
 
-function App(): JSX.Element {
+type AppProps = {
+  filmGenre: string;
+  filmName: string;
+  filmReleaseYear: string;
+}
+
+function App(
+  { filmGenre, filmName, filmReleaseYear }: AppProps,
+): JSX.Element {
   return (
-    <MainView />
+    <MainView
+      filmGenre={filmGenre}
+      filmName={filmName}
+      filmReleaseYear={filmReleaseYear}
+    />
   );
 }
 
