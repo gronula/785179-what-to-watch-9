@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import FilmView from '../film-view/film-view';
 import LoginView from '../login-view/login-view';
 import MainView from '../main-view/main-view';
 import MyListView from '../my-list-view/my-list-view';
 import NotFoundView from '../not-found-view/not-found-view';
 import PlayerView from '../player-view/player-view';
+import PrivateRoute from '../private-route/private-route';
 import ReviewView from '../review-view/review-view';
 
 type AppProps = {
@@ -33,7 +34,11 @@ function App(
 
         <Route
           path={AppRoute.MyList}
-          element={<MyListView />}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <MyListView />
+            </PrivateRoute>
+          }
         />
 
         <Route
