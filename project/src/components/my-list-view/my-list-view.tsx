@@ -29,7 +29,12 @@ function MyListView(): JSX.Element {
             </div>
           </li>
           <li className="user-block__item">
-            <a className="user-block__link">Sign out</a>
+            <a
+              className="user-block__link"
+              href="logout.html"
+            >
+              Sign out
+            </a>
           </li>
         </ul>
       </header>

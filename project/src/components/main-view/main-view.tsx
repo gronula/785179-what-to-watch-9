@@ -27,7 +27,10 @@ function MainView(
 
         <header className="page-header film-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <a
+              className="logo__link"
+              href="/"
+            >
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
@@ -46,7 +49,12 @@ function MainView(
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a
+                className="user-block__link"
+                href="logout.html"
+              >
+                Sign out
+              </a>
             </li>
           </ul>
         </header>
@@ -110,7 +118,7 @@ function MainView(
           <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
               <a
-                href="#"
+                href="all-genres.html"
                 className="catalog__genres-link"
               >
                 All genres
@@ -118,7 +126,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="comedies.html"
                 className="catalog__genres-link"
               >
                 Comedies
@@ -126,7 +134,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="crime.html"
                 className="catalog__genres-link"
               >
                 Crime
@@ -134,7 +142,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="documentary.html"
                 className="catalog__genres-link"
               >
                 Documentary
@@ -142,7 +150,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="dramas.html"
                 className="catalog__genres-link"
               >
                 Dramas
@@ -150,7 +158,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="horror.html"
                 className="catalog__genres-link"
               >
                 Horror
@@ -158,7 +166,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="kids-family.html"
                 className="catalog__genres-link"
               >
                 Kids & Family
@@ -166,7 +174,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="romance.html"
                 className="catalog__genres-link"
               >
                 Romance
@@ -174,7 +182,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="sci-fi.html"
                 className="catalog__genres-link"
               >
                 Sci-Fi
@@ -182,7 +190,7 @@ function MainView(
             </li>
             <li className="catalog__genres-item">
               <a
-                href="#"
+                href="thrillers.html"
                 className="catalog__genres-link"
               >
                 Thrillers
@@ -214,7 +222,10 @@ function MainView(
 
         <footer className="page-footer">
           <div className="logo">
-            <a className="logo__link logo__link--light">
+            <a
+              className="logo__link logo__link--light"
+              href="/"
+            >
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>

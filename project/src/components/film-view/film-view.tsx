@@ -42,7 +42,12 @@ function FilmView(): JSX.Element {
               </li>
 
               <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
+                <a
+                  className="user-block__link"
+                  href="logout.html"
+                >
+                  Sign out
+                </a>
               </li>
             </ul>
           </header>
@@ -112,7 +117,7 @@ function FilmView(): JSX.Element {
                 <ul className="film-nav__list">
                   <li className="film-nav__item film-nav__item--active">
                     <a
-                      href="#"
+                      href="overview.html"
                       className="film-nav__link"
                     >
                       Overview
@@ -121,7 +126,7 @@ function FilmView(): JSX.Element {
 
                   <li className="film-nav__item">
                     <a
-                      href="#"
+                      href="details.html"
                       className="film-nav__link"
                     >
                       Details
@@ -130,7 +135,7 @@ function FilmView(): JSX.Element {
 
                   <li className="film-nav__item">
                     <a
-                      href="#"
+                      href="reviews.html"
                       className="film-nav__link"
                     >
                       Reviews
