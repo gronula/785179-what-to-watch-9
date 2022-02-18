@@ -3,9 +3,8 @@ import LoginView from './components/login-view/login-view';
 import MainView from './components/main-view/main-view';
 import MyListView from './components/my-list-view/my-list-view';
 import PlayerView from './components/player-view/player-view';
-import PrivateRoute from './components/private-route/private-route';
 import ReviewView from './components/review-view/review-view';
-import { AppRoute, AuthorizationStatus } from './const';
+import { AppRoute } from './const';
 
 type Route = {
   path: string;
@@ -36,9 +35,7 @@ export const AppRoutes: Route[] = [
   {
     path: AppRoute.MyList,
     element: (props) => (
-      <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-        <MyListView {...props} />
-      </PrivateRoute>
+      <MyListView {...props} />
     ),
     isPrivate: true,
   },

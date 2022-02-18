@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundView from '../not-found-view/not-found-view';
 import { AppRoutes } from '../../routes';
+import PrivateRoute from '../private-route/private-route';
+import { AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmGenre: string;
@@ -19,11 +21,26 @@ function App(
             <Route
               key={route.path}
               path={route.path}
-              element={route.element({
-                filmGenre,
-                filmName,
-                filmReleaseYear,
-              })}
+              element={
+                route.isPrivate
+                  ? (
+                    <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                      {
+                        route.element({
+                          filmGenre,
+                          filmName,
+                          filmReleaseYear,
+                        })
+                      }
+                    </PrivateRoute>
+                  ) : (
+                    route.element({
+                      filmGenre,
+                      filmName,
+                      filmReleaseYear,
+                    })
+                  )
+              }
             />
           ))
         }
