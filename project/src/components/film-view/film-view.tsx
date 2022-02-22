@@ -1,5 +1,5 @@
-import SmallFilmCard from '../small-film-card/small-film-card';
 import { Films } from '../../types/films';
+import FilmsList from '../films-list/films-list';
 
 type FilmViewProps = {
   films: Films
@@ -173,15 +173,10 @@ function FilmView({ films }: FilmViewProps): JSX.Element {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {
-              films.slice(0, 4).map(({ id, ...film }) => (
-                <SmallFilmCard
-                  key={id}
-                  className="catalog__films-card"
-                  {...film}
-                />
-              ))
-            }
+            <FilmsList
+              className="catalog__films-card"
+              films={films.slice(0, 4)}
+            />
           </div>
         </section>
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import SmallFilmCard from '../small-film-card/small-film-card';
 import { Films } from '../../types/films';
+import FilmsList from '../films-list/films-list';
 
 type MainViewProps = {
   filmGenre: string;
@@ -198,15 +198,10 @@ function MainView(
           </ul>
 
           <div className="catalog__films-list">
-            {
-              films.slice(0, 20).map(({ id, ...film }) => (
-                <SmallFilmCard
-                  key={id}
-                  className="catalog__films-card"
-                  {...film}
-                />
-              ))
-            }
+            <FilmsList
+              className="catalog__films-card"
+              films={films.slice(0, 20)}
+            />
           </div>
 
           <div className="catalog__more">
