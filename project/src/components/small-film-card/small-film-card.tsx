@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { BaseProps } from '../../types/base-props';
 import { Film } from '../../types/films';
 
@@ -20,7 +21,6 @@ function SmallFilmCard(
     id,
     handleMouseEnter,
     handleMouseLeave,
-    href = 'film-page.html',
     name,
     posterImage,
     posterSize = 'medium',
@@ -44,12 +44,12 @@ function SmallFilmCard(
       </div>
 
       <h3 className="small-film-card__title">
-        <a
+        <Link
           className="small-film-card__link"
-          href={href}
+          to={`/films/${id}`}
         >
           {name}
-        </a>
+        </Link>
       </h3>
     </article>
   );
