@@ -3,6 +3,7 @@ export type Film = {
   id: number;
   name: string;
   posterImage: string;
+  videoLink?: string;
 };
 
 export type Films = Film[]

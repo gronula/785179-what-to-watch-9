@@ -1,10 +1,26 @@
-function PlayerView(): JSX.Element {
+import { useParams } from 'react-router-dom';
+import { Films } from '../../types/films';
+
+type PlayerViewProps = {
+  films: Films;
+}
+
+function PlayerView(
+  { films }: PlayerViewProps,
+): JSX.Element {
+  const params = useParams();
+  const id = Number(params.id);
+  const {
+    posterImage = '',
+    videoLink = '',
+  } = films.find((film) => film.id === id) || {};
+
   return (
     <div className="player">
       <video
-        src="#"
+        src={videoLink}
         className="player__video"
-        poster="img/player-poster.jpg"
+        poster={posterImage}
       >
       </video>
 
