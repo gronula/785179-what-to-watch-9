@@ -1,6 +1,6 @@
 import React from 'react';
 import SmallFilmCard from '../small-film-card/small-film-card';
-import FILMS from '../../mocks/films.json';
+import { films } from '../../mocks/films';
 
 type MainViewProps = {
   filmGenre: string;
@@ -8,7 +8,7 @@ type MainViewProps = {
   filmReleaseYear: string;
 }
 
-const filmsList = FILMS.slice();
+const filmsList = films.slice();
 
 function MainView(
   { filmGenre, filmName, filmReleaseYear }: MainViewProps,

@@ -1,7 +1,7 @@
 import SmallFilmCard from '../small-film-card/small-film-card';
-import FILMS from '../../mocks/films.json';
+import { films } from '../../mocks/films';
 
-const filmsList = FILMS.slice(0, 9);
+const filmsList = films.slice(0, 9);
 
 function MyListView(): JSX.Element {
   return (
