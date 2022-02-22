@@ -1,13 +1,30 @@
-function ReviewView(): JSX.Element {
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { Films } from '../../types/films';
+
+type ReviewViewProps = {
+  films: Films;
+}
+
+function ReviewView(
+  { films }: ReviewViewProps,
+): JSX.Element {
   const RATING_ITEMS = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  const params = useParams();
+  const id = Number(params.id);
+  const {
+    backgroundImage = '',
+    name,
+    posterImage,
+  } = films.find((film) => film.id === id) || {};
 
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
           <img
-            src="img/bg-the-grand-budapest-hotel.jpg"
-            alt="The Grand Budapest Hotel"
+            src={backgroundImage}
+            alt={name}
           />
         </div>
 
@@ -32,7 +49,7 @@ function ReviewView(): JSX.Element {
                   href="film-page.html"
                   className="breadcrumbs__link"
                 >
-                  The Grand Budapest Hotel
+                  {name}
                 </a>
               </li>
 
@@ -72,8 +89,8 @@ function ReviewView(): JSX.Element {
 
         <div className="film-card__poster film-card__poster--small">
           <img
-            src="img/the-grand-budapest-hotel-poster.jpg"
-            alt="The Grand Budapest Hotel poster"
+            src={posterImage}
+            alt={name}
             width="218"
             height="327"
           />
@@ -89,7 +106,7 @@ function ReviewView(): JSX.Element {
             <div className="rating__stars">
               {
                 RATING_ITEMS.map((item) => (
-                  <>
+                  <React.Fragment key={item}>
                     <input
                       className="rating__input"
                       id={`star-${item}`}
@@ -104,7 +121,7 @@ function ReviewView(): JSX.Element {
                     >
                       Rating {item}
                     </label>
-                  </>
+                  </React.Fragment>
                 ))
               }
             </div>

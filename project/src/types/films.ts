@@ -1,4 +1,5 @@
 export type Film = {
+  backgroundImage?: string;
   href?: string;
   id: number;
   name: string;
