@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Films } from '../../types/films';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';

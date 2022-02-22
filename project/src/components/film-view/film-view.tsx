@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Films } from '../../types/films';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
