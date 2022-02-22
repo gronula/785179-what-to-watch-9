@@ -1,5 +1,6 @@
 export type Film = {
-  id: number;
+  href?: string;
+  id?: number;
   name: string;
   posterImage: string;
 };

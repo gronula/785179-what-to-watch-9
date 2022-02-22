@@ -1,11 +1,7 @@
-type BaseProps = {
-  className?: string;
-}
+import { BaseProps } from '../../types/base-props';
+import { Film } from '../../types/films';
 
-type SmallFilmCardProps = BaseProps & {
-  href?: string;
-  name: string;
-  posterImage: string;
+type SmallFilmCardProps = BaseProps & Film & {
   posterSize?: 'medium';
 }
 
