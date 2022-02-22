@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Films } from '../../types/films';
 import Logo from '../logo/logo';
@@ -37,21 +38,21 @@ function ReviewView(
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a
-                  href="film-page.html"
+                <Link
                   className="breadcrumbs__link"
+                  to={`/films/${id}`}
                 >
                   {name}
-                </a>
+                </Link>
               </li>
 
               <li className="breadcrumbs__item">
-                <a
+                <Link
                   className="breadcrumbs__link"
-                  href="add-review.html"
+                  to={`/films/${id}/review`}
                 >
                   Add review
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
