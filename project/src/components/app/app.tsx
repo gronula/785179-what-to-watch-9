@@ -3,15 +3,17 @@ import NotFoundView from '../not-found-view/not-found-view';
 import { AppRoutes } from '../../routes';
 import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
+import { Films } from '../../types/films';
 
 type AppProps = {
   filmGenre: string;
   filmName: string;
   filmReleaseYear: string;
+  films: Films;
 }
 
 function App(
-  { filmGenre, filmName, filmReleaseYear }: AppProps,
+  { filmGenre, filmName, filmReleaseYear, films }: AppProps,
 ): JSX.Element {
   return (
     <BrowserRouter>
@@ -24,12 +26,13 @@ function App(
               element={
                 route.isPrivate
                   ? (
-                    <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                    <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
                       {
                         route.element({
                           filmGenre,
                           filmName,
                           filmReleaseYear,
+                          films,
                         })
                       }
                     </PrivateRoute>
@@ -38,6 +41,7 @@ function App(
                       filmGenre,
                       filmName,
                       filmReleaseYear,
+                      films,
                     })
                   )
               }

@@ -1,17 +1,16 @@
 import React from 'react';
 import SmallFilmCard from '../small-film-card/small-film-card';
-import { films } from '../../mocks/films';
+import { Films } from '../../types/films';
 
 type MainViewProps = {
   filmGenre: string;
   filmName: string;
   filmReleaseYear: string;
+  films: Films;
 }
 
-const filmsList = films.slice();
-
 function MainView(
-  { filmGenre, filmName, filmReleaseYear }: MainViewProps,
+  { filmGenre, filmName, filmReleaseYear, films }: MainViewProps,
 ): JSX.Element {
   return (
     <>
@@ -200,7 +199,7 @@ function MainView(
 
           <div className="catalog__films-list">
             {
-              filmsList.map(({id, ...film}) => (
+              films.slice(0, 20).map(({ id, ...film }) => (
                 <SmallFilmCard
                   key={id}
                   className="catalog__films-card"

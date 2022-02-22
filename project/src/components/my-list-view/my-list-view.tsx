@@ -1,9 +1,11 @@
 import SmallFilmCard from '../small-film-card/small-film-card';
-import { films } from '../../mocks/films';
+import { Films } from '../../types/films';
 
-const filmsList = films.slice(0, 9);
+type MyListViewProps = {
+  films: Films
+}
 
-function MyListView(): JSX.Element {
+function MyListView({ films }: MyListViewProps): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -44,7 +46,7 @@ function MyListView(): JSX.Element {
 
         <div className="catalog__films-list">
           {
-            filmsList.map(({id, ...film}) => (
+            films.slice(0, 8).map(({ id, ...film }) => (
               <SmallFilmCard
                 key={id}
                 className="catalog__films-card"
