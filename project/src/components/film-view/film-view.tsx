@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Films } from '../../types/films';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
@@ -7,14 +9,22 @@ type FilmViewProps = {
 }
 
 function FilmView({ films }: FilmViewProps): JSX.Element {
+  const params = useParams();
+  const id = Number(params.id);
+  const {
+    backgroundImage = '',
+    name,
+    posterImage,
+  } = films.find((film) => film.id === id) || {};
+
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
+              src={backgroundImage}
+              alt={name}
             />
           </div>
 
@@ -48,7 +58,7 @@ function FilmView({ films }: FilmViewProps): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{name}</h2>
 
               <p className="film-card__meta">
                 <span className="film-card__genre">Drama</span>
@@ -84,12 +94,12 @@ function FilmView({ films }: FilmViewProps): JSX.Element {
                   <span>My list</span>
                 </button>
 
-                <a
-                  href="add-review.html"
+                <Link
                   className="btn film-card__button"
+                  to={`/films/${id}/review`}
                 >
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -99,8 +109,8 @@ function FilmView({ films }: FilmViewProps): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={posterImage}
+                alt={name}
                 width="218"
                 height="327"
               />
