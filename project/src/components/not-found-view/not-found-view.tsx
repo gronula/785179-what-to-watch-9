@@ -1,3 +1,4 @@
+import { LogoTheme } from '../../const';
 import Logo from '../logo/logo';
 
 function NotFoundView(): JSX.Element {
@@ -15,7 +16,7 @@ function NotFoundView(): JSX.Element {
         </div>
 
         <footer className="page-footer">
-          <Logo light />
+          <Logo theme={LogoTheme.Light} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

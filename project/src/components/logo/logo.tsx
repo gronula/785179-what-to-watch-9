@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
+import { LogoTheme } from '../../const';
 
 type LogoProps = {
-  light?: boolean;
+  theme?: LogoTheme.Dark | LogoTheme.Light;
 }
 
 function Logo(
   {
-    light = false,
+    theme = LogoTheme.Dark,
   }: LogoProps,
 ): JSX.Element {
   return (
     <div className="logo">
       <Link
-        className={`logo__link ${light ? 'logo__link--light' : ''}`}
+        className={`logo__link ${theme === LogoTheme.Light ? 'logo__link--light' : ''}`}
         to="/"
       >
         <span className="logo__letter logo__letter--1">W</span>

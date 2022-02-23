@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { LogoTheme } from '../../const';
 import { Film } from '../../types/films';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
@@ -169,7 +170,7 @@ function FilmView(
         </section>
 
         <footer className="page-footer">
-          <Logo light />
+          <Logo theme={LogoTheme.Light} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
