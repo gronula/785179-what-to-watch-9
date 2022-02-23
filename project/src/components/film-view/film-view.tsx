@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { LogoTheme } from '../../const';
 import { Film } from '../../types/films';
+import { getFilmById } from '../../utils/utils';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
@@ -18,11 +19,12 @@ function FilmView(
 ): JSX.Element {
   const params = useParams();
   const id = Number(params.id);
+  // TODO вынести в useEffect
   const {
     backgroundImage = '',
     name,
     posterImage,
-  } = films.find((film) => film.id === id) || {};
+  } = getFilmById(films, id) || {};
   const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
 
   return (

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Film } from '../../types/films';
+import { getFilmById } from '../../utils/utils';
 
 type PlayerViewProps = {
   films: Film[];
@@ -12,10 +13,11 @@ function PlayerView(
 ): JSX.Element {
   const params = useParams();
   const id = Number(params.id);
+  // TODO вынести в useEffect
   const {
     posterImage = '',
     videoLink = '',
-  } = films.find((film) => film.id === id) || {};
+  } = getFilmById(films, id) || {};
 
   return (
     <div className="player">

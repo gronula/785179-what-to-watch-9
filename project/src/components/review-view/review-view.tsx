@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { Film } from '../../types/films';
+import { getFilmById } from '../../utils/utils';
 import Logo from '../logo/logo';
 import ReviewForm from '../review-form/review-form';
 import UserBlock from '../user-block/user-block';
@@ -15,11 +16,12 @@ function ReviewView(
 ): JSX.Element {
   const params = useParams();
   const id = Number(params.id);
+  // TODO вынести в useEffect
   const {
     backgroundImage = '',
     name,
     posterImage,
-  } = films.find((film) => film.id === id) || {};
+  } = getFilmById(films, id) || {};
 
   return (
     <section className="film-card film-card--full">
