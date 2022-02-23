@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import { Films } from '../../types/films';
+import { Film } from '../../types/films';
 import FilmsList from '../films-list/films-list';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 
 type FilmViewProps = {
-  films: Films
+  films: Film[];
 }
 
 const CATALOG_FILMS_NUMBER = 4;

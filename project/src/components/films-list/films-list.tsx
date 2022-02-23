@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { BaseProps } from '../../types/base-props';
-import { Film, Films } from '../../types/films';
+import { Film } from '../../types/films';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
 type FilmsListProps = BaseProps & {
-  films: Films;
+  films: Film[];
   posterSize?: 'medium';
 }
 

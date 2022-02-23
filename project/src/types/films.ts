@@ -5,5 +5,3 @@ export type Film = {
   posterImage: string;
   videoLink?: string;
 };
-
-export type Films = Film[]

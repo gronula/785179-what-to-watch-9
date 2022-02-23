@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import { Films } from '../../types/films';
+import { Film } from '../../types/films';
 import Logo from '../logo/logo';
 import ReviewForm from '../review-form/review-form';
 import UserBlock from '../user-block/user-block';
 
 type ReviewViewProps = {
-  films: Films;
+  films: Film[];
 }
 
 function ReviewView(

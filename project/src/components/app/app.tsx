@@ -3,13 +3,13 @@ import NotFoundView from '../not-found-view/not-found-view';
 import { AppRoutes } from '../../routes';
 import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
-import { Films } from '../../types/films';
+import { Film } from '../../types/films';
 
 type AppProps = {
   filmGenre: string;
   filmName: string;
   filmReleaseYear: string;
-  films: Films;
+  films: Film[];
 }
 
 function App(

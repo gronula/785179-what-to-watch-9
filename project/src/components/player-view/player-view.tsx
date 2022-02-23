@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { Films } from '../../types/films';
+import { Film } from '../../types/films';
 
 type PlayerViewProps = {
-  films: Films;
+  films: Film[];
 }
 
 function PlayerView(
