@@ -6,20 +6,20 @@ import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 
 type MainViewProps = {
-  filmGenre: string;
-  filmName: string;
-  filmReleaseYear: string;
   films: Film[];
+  genre: string;
+  name: string;
+  releaseDate: string;
 }
 
 const CATALOG_FILMS_NUMBER = 20;
 
 function MainView(
   {
-    filmGenre,
-    filmName,
-    filmReleaseYear,
     films,
+    genre,
+    name,
+    releaseDate,
   }: MainViewProps,
 ): JSX.Element {
   const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
@@ -53,10 +53,10 @@ function MainView(
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{filmName}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{filmGenre}</span>
-                <span className="film-card__year">{filmReleaseYear}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{releaseDate}</span>
               </p>
 
               <div className="film-card__buttons">

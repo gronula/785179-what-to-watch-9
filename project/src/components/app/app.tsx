@@ -6,18 +6,18 @@ import { AuthorizationStatus } from '../../const';
 import { Film } from '../../types/films';
 
 type AppProps = {
-  filmGenre: string;
-  filmName: string;
-  filmReleaseYear: string;
   films: Film[];
+  genre: string;
+  name: string;
+  releaseDate: string;
 }
 
 function App(
   {
-    filmGenre,
-    filmName,
-    filmReleaseYear,
     films,
+    genre,
+    name,
+    releaseDate,
   }: AppProps,
 ): JSX.Element {
   return (
@@ -34,18 +34,18 @@ function App(
                     <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
                       {
                         route.element({
-                          filmGenre,
-                          filmName,
-                          filmReleaseYear,
+                          genre,
+                          name,
+                          releaseDate,
                           films,
                         })
                       }
                     </PrivateRoute>
                   ) : (
                     route.element({
-                      filmGenre,
-                      filmName,
-                      filmReleaseYear,
+                      genre,
+                      name,
+                      releaseDate,
                       films,
                     })
                   )
