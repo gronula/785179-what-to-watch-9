@@ -8,6 +8,8 @@ type FilmViewProps = {
   films: Films
 }
 
+const CATALOG_FILMS_NUMBER = 4;
+
 function FilmView(
   {
     films,
@@ -20,6 +22,7 @@ function FilmView(
     name,
     posterImage,
   } = films.find((film) => film.id === id) || {};
+  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
 
   return (
     <>
@@ -160,7 +163,7 @@ function FilmView(
           <div className="catalog__films-list">
             <FilmsList
               className="catalog__films-card"
-              films={films.slice(0, 4)}
+              films={catalogFilms}
             />
           </div>
         </section>

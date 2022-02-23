@@ -7,11 +7,15 @@ type MyListViewProps = {
   films: Films
 }
 
+const CATALOG_FILMS_NUMBER = 8;
+
 function MyListView(
   {
     films,
   }: MyListViewProps,
 ): JSX.Element {
+  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -28,7 +32,7 @@ function MyListView(
         <div className="catalog__films-list">
           <FilmsList
             className="catalog__films-card"
-            films={films.slice(0, 8)}
+            films={catalogFilms}
           />
         </div>
       </section>

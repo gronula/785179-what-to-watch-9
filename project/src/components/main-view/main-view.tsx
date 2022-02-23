@@ -11,6 +11,8 @@ type MainViewProps = {
   films: Films;
 }
 
+const CATALOG_FILMS_NUMBER = 20;
+
 function MainView(
   {
     filmGenre,
@@ -19,6 +21,8 @@ function MainView(
     films,
   }: MainViewProps,
 ): JSX.Element {
+  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+
   return (
     <>
       <section className="film-card">
@@ -178,7 +182,7 @@ function MainView(
           <div className="catalog__films-list">
             <FilmsList
               className="catalog__films-card"
-              films={films.slice(0, 20)}
+              films={catalogFilms}
             />
           </div>
 
