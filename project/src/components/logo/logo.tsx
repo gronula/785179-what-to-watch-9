@@ -5,7 +5,9 @@ type LogoProps = {
 }
 
 function Logo(
-  { light = false }: LogoProps,
+  {
+    light = false,
+  }: LogoProps,
 ): JSX.Element {
   return (
     <div className="logo">

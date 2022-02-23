@@ -6,7 +6,9 @@ type PlayerViewProps = {
 }
 
 function PlayerView(
-  { films }: PlayerViewProps,
+  {
+    films,
+  }: PlayerViewProps,
 ): JSX.Element {
   const params = useParams();
   const id = Number(params.id);

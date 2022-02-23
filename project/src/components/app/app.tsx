@@ -13,7 +13,12 @@ type AppProps = {
 }
 
 function App(
-  { filmGenre, filmName, filmReleaseYear, films }: AppProps,
+  {
+    filmGenre,
+    filmName,
+    filmReleaseYear,
+    films,
+  }: AppProps,
 ): JSX.Element {
   return (
     <BrowserRouter>

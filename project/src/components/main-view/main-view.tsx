@@ -12,7 +12,12 @@ type MainViewProps = {
 }
 
 function MainView(
-  { filmGenre, filmName, filmReleaseYear, films }: MainViewProps,
+  {
+    filmGenre,
+    filmName,
+    filmReleaseYear,
+    films,
+  }: MainViewProps,
 ): JSX.Element {
   return (
     <>

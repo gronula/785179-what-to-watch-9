@@ -9,7 +9,9 @@ type ReviewViewProps = {
 }
 
 function ReviewView(
-  { films }: ReviewViewProps,
+  {
+    films,
+  }: ReviewViewProps,
 ): JSX.Element {
   const params = useParams();
   const id = Number(params.id);

@@ -7,7 +7,11 @@ type MyListViewProps = {
   films: Films
 }
 
-function MyListView({ films }: MyListViewProps): JSX.Element {
+function MyListView(
+  {
+    films,
+  }: MyListViewProps,
+): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">

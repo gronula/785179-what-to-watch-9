@@ -8,7 +8,11 @@ type FilmViewProps = {
   films: Films
 }
 
-function FilmView({ films }: FilmViewProps): JSX.Element {
+function FilmView(
+  {
+    films,
+  }: FilmViewProps,
+): JSX.Element {
   const params = useParams();
   const id = Number(params.id);
   const {
