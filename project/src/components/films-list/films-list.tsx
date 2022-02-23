@@ -15,20 +15,18 @@ function FilmsList(
     posterSize = 'medium',
   }: FilmsListProps,
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeFilmCard, setActiveFilmCard] = useState<Film | null>(null);
-  const getFilmById = (id: number): Film | null => films.find((film) => film.id === id) || null;
+  const [activeFilmCardId, setActiveFilmCardId] = useState<number | null>(null);
 
   return (
     <>
       {
-        films.map(({ id, ...film }) => (
+        films.map((film) => (
           <SmallFilmCard
-            key={id}
+            key={film.id}
+            activeFilmCardId={activeFilmCardId}
             className={className}
-            handleMouseEnter={(filmId) => setActiveFilmCard(getFilmById(filmId))}
-            handleMouseLeave={() => setActiveFilmCard(null)}
-            id={id}
+            handleMouseEnter={(filmId) => setActiveFilmCardId(filmId)}
+            handleMouseLeave={() => setActiveFilmCardId(null)}
             posterSize={posterSize}
             {...film}
           />

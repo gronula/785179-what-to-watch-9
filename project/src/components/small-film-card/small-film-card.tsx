@@ -3,6 +3,7 @@ import { BaseProps } from '../../types/base-props';
 import { Film } from '../../types/films';
 
 type SmallFilmCardProps = BaseProps & Film & {
+  activeFilmCardId: number | null;
   handleMouseEnter?: (id: number) => void;
   handleMouseLeave?: (id: number) => void;
   posterSize?: 'medium';
@@ -17,6 +18,7 @@ const PosterSize = {
 
 function SmallFilmCard(
   {
+    activeFilmCardId,
     className = '',
     id,
     handleMouseEnter,
