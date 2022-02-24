@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BaseProps } from '../../types/base-props';
 import { Film } from '../../types/films';
+import { noop } from '../../utils/utils';
 
 type SmallFilmCardProps = BaseProps & Film & {
   activeFilmCardId: number | null;
@@ -21,8 +22,8 @@ function SmallFilmCard(
     activeFilmCardId,
     className = '',
     id,
-    handleMouseEnter,
-    handleMouseLeave,
+    handleMouseEnter = noop,
+    handleMouseLeave = noop,
     name,
     posterImage,
     posterSize = 'medium',
@@ -33,8 +34,8 @@ function SmallFilmCard(
   return (
     <article
       className={`small-film-card ${className}`}
-      onMouseEnter={() => handleMouseEnter?.(id)}
-      onMouseLeave={() => handleMouseLeave?.(id)}
+      onMouseEnter={() => handleMouseEnter(id)}
+      onMouseLeave={() => handleMouseLeave(id)}
     >
       <div className="small-film-card__image">
         <img
