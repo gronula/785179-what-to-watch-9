@@ -1,11 +1,12 @@
-type BaseProps = {
-  className?: string;
-}
+import { Link } from 'react-router-dom';
+import { BaseProps } from '../../types/base-props';
+import { Film } from '../../types/films';
+import { noop } from '../../utils/utils';
 
-type SmallFilmCardProps = BaseProps & {
-  href?: string;
-  name: string;
-  posterImage: string;
+type SmallFilmCardProps = BaseProps & Film & {
+  activeFilmCardId: number | null;
+  handleMouseEnter?: (id: number) => void;
+  handleMouseLeave?: (id: number) => void;
   posterSize?: 'medium';
 }
 
@@ -18,8 +19,11 @@ const PosterSize = {
 
 function SmallFilmCard(
   {
+    activeFilmCardId,
     className = '',
-    href = 'film-page.html',
+    id,
+    handleMouseEnter = noop,
+    handleMouseLeave = noop,
     name,
     posterImage,
     posterSize = 'medium',
@@ -28,7 +32,11 @@ function SmallFilmCard(
   const { width, height } = PosterSize[posterSize];
 
   return (
-    <article className={`small-film-card ${className}`} >
+    <article
+      className={`small-film-card ${className}`}
+      onMouseEnter={() => handleMouseEnter(id)}
+      onMouseLeave={() => handleMouseLeave(id)}
+    >
       <div className="small-film-card__image">
         <img
           src={posterImage}
@@ -39,12 +47,12 @@ function SmallFilmCard(
       </div>
 
       <h3 className="small-film-card__title">
-        <a
+        <Link
           className="small-film-card__link"
-          href={href}
+          to={`/films/${id}`}
         >
           {name}
-        </a>
+        </Link>
       </h3>
     </article>
   );

@@ -1,60 +1,53 @@
-import SmallFilmCard from '../small-film-card/small-film-card';
-import FILMS from '../../mocks/films.json';
+import { Link, useParams } from 'react-router-dom';
+import { LogoTheme } from '../../const';
+import { Film } from '../../types/films';
+import { getFilmById } from '../../utils/utils';
+import FilmsList from '../films-list/films-list';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
 
-const filmsList = FILMS.slice(0, 4);
+type FilmViewProps = {
+  films: Film[];
+}
 
-function FilmView(): JSX.Element {
+const CATALOG_FILMS_NUMBER = 4;
+
+function FilmView(
+  {
+    films,
+  }: FilmViewProps,
+): JSX.Element {
+  const params = useParams();
+  const id = Number(params.id);
+  // TODO вынести в useEffect
+  const {
+    backgroundImage = '',
+    name,
+    posterImage,
+  } = getFilmById(films, id) || {};
+  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
+              src={backgroundImage}
+              alt={name}
             />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <div className="logo">
-              <a
-                href="main.html"
-                className="logo__link"
-              >
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img
-                    src="img/avatar.jpg"
-                    alt="User avatar"
-                    width="63"
-                    height="63"
-                  />
-                </div>
-              </li>
-
-              <li className="user-block__item">
-                <a
-                  className="user-block__link"
-                  href="logout.html"
-                >
-                  Sign out
-                </a>
-              </li>
-            </ul>
+            <Logo />
+            <UserBlock />
           </header>
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{name}</h2>
 
               <p className="film-card__meta">
                 <span className="film-card__genre">Drama</span>
@@ -90,12 +83,12 @@ function FilmView(): JSX.Element {
                   <span>My list</span>
                 </button>
 
-                <a
-                  href="add-review.html"
+                <Link
                   className="btn film-card__button"
+                  to={`/films/${id}/review`}
                 >
                   Add review
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -105,8 +98,8 @@ function FilmView(): JSX.Element {
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={posterImage}
+                alt={name}
                 width="218"
                 height="327"
               />
@@ -171,26 +164,15 @@ function FilmView(): JSX.Element {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {
-              filmsList.map(({id, ...film}) => (
-                <SmallFilmCard
-                  key={id}
-                  className="catalog__films-card"
-                  {...film}
-                />
-              ))
-            }
+            <FilmsList
+              className="catalog__films-card"
+              films={catalogFilms}
+            />
           </div>
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo theme={LogoTheme.Light} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

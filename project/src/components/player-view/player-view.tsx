@@ -1,10 +1,30 @@
-function PlayerView(): JSX.Element {
+import { useParams } from 'react-router-dom';
+import { Film } from '../../types/films';
+import { getFilmById } from '../../utils/utils';
+
+type PlayerViewProps = {
+  films: Film[];
+}
+
+function PlayerView(
+  {
+    films,
+  }: PlayerViewProps,
+): JSX.Element {
+  const params = useParams();
+  const id = Number(params.id);
+  // TODO вынести в useEffect
+  const {
+    posterImage = '',
+    videoLink = '',
+  } = getFilmById(films, id) || {};
+
   return (
     <div className="player">
       <video
-        src="#"
+        src={videoLink}
         className="player__video"
-        poster="img/player-poster.jpg"
+        poster={posterImage}
       >
       </video>
 

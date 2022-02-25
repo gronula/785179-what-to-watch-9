@@ -1,18 +1,29 @@
 import React from 'react';
-import SmallFilmCard from '../small-film-card/small-film-card';
-import FILMS from '../../mocks/films.json';
+import { LogoTheme } from '../../const';
+import { Film } from '../../types/films';
+import FilmsList from '../films-list/films-list';
+import Logo from '../logo/logo';
+import UserBlock from '../user-block/user-block';
 
 type MainViewProps = {
-  filmGenre: string;
-  filmName: string;
-  filmReleaseYear: string;
+  films: Film[];
+  genre: string;
+  name: string;
+  releaseDate: string;
 }
 
-const filmsList = FILMS.slice();
+const CATALOG_FILMS_NUMBER = 20;
 
 function MainView(
-  { filmGenre, filmName, filmReleaseYear }: MainViewProps,
+  {
+    films,
+    genre,
+    name,
+    releaseDate,
+  }: MainViewProps,
 ): JSX.Element {
+  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+
   return (
     <>
       <section className="film-card">
@@ -26,37 +37,8 @@ function MainView(
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <a
-              className="logo__link"
-              href="/"
-            >
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img
-                  src="img/avatar.jpg"
-                  alt="User avatar"
-                  width="63"
-                  height="63"
-                />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a
-                className="user-block__link"
-                href="logout.html"
-              >
-                Sign out
-              </a>
-            </li>
-          </ul>
+          <Logo />
+          <UserBlock />
         </header>
 
         <div className="film-card__wrap">
@@ -71,10 +53,10 @@ function MainView(
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{filmName}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{filmGenre}</span>
-                <span className="film-card__year">{filmReleaseYear}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{releaseDate}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -199,15 +181,10 @@ function MainView(
           </ul>
 
           <div className="catalog__films-list">
-            {
-              filmsList.map(({id, ...film}) => (
-                <SmallFilmCard
-                  key={id}
-                  className="catalog__films-card"
-                  {...film}
-                />
-              ))
-            }
+            <FilmsList
+              className="catalog__films-card"
+              films={catalogFilms}
+            />
           </div>
 
           <div className="catalog__more">
@@ -221,16 +198,7 @@ function MainView(
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a
-              className="logo__link logo__link--light"
-              href="/"
-            >
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo theme={LogoTheme.Light} />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>
