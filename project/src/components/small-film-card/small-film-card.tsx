@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { BaseProps } from '../../types/base-props';
 import { Film } from '../../types/films';
 import { noop } from '../../utils/utils';
+import VideoPlayer from '../video-player/video-player';
 
 type SmallFilmCardProps = BaseProps & Film & {
-  activeFilmCardId: number | null;
   handleMouseEnter?: (id: number) => void;
   handleMouseLeave?: (id: number) => void;
+  isActive: boolean;
   posterSize?: 'medium';
 }
 
@@ -19,14 +20,15 @@ const PosterSize = {
 
 function SmallFilmCard(
   {
-    activeFilmCardId,
     className = '',
-    id,
     handleMouseEnter = noop,
     handleMouseLeave = noop,
+    id,
+    isActive,
     name,
     posterImage,
     posterSize = 'medium',
+    videoLink = '',
   }: SmallFilmCardProps,
 ): JSX.Element {
   const { width, height } = PosterSize[posterSize];
@@ -38,11 +40,13 @@ function SmallFilmCard(
       onMouseLeave={() => handleMouseLeave(id)}
     >
       <div className="small-film-card__image">
-        <img
-          src={posterImage}
-          alt={name}
+        <VideoPlayer
+          src={videoLink}
+          poster={posterImage}
           width={width}
           height={height}
+          isActive={isActive}
+          muted
         />
       </div>
 
