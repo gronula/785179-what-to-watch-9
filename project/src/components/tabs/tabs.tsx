@@ -6,40 +6,42 @@ import FilmOverviewTab from '../film-overview-tab/film-overview-tab';
 import FilmReviewsTab from '../film-reviews-tab/film-reviews-tab';
 
 type TabsProps = {
-  film: Film | null;
+  film: Film;
 }
-type TabComponent = {
-  [key: string]: (props?: any) => JSX.Element;
+
+type TabComponentType = {
+  [key: string]: (props: Film) => JSX.Element;
 }
 
 const TABS: Tab[] = [
   {
-    href: '#',
+    href: 'overview',
     id: 'overview',
     title: 'Overview',
   },
   {
-    href: '#',
+    href: 'details',
     id: 'details',
     title: 'Details',
   },
   {
-    href: '#',
+    href: 'reviews',
     id: 'reviews',
     title: 'Reviews',
   },
 ];
+
+const TabComponent: TabComponentType = {
+  overview: (props) => <FilmOverviewTab {...props} />,
+  details: (props) => <FilmDetailsTab {...props} />,
+  reviews: (props) => <FilmReviewsTab {...props} />,
+};
 
 function Tabs(
   {
     film,
   }: TabsProps,
 ): JSX.Element {
-  const TabComponent: TabComponent = {
-    overview: (props) => <FilmOverviewTab {...props} />,
-    details: (props) => <FilmDetailsTab {...props} />,
-    reviews: (props) => <FilmReviewsTab {...props} />,
-  };
   const [activeTabId, setActiveTabId] = useState('overview');
   const handleClick = (evt: MouseEvent, tabId: string): void => {
     evt.preventDefault();

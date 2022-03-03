@@ -111,7 +111,7 @@ function FilmView(
             </div>
 
             <div className="film-card__desc">
-              <Tabs film={film} />
+              <Tabs film={film as Film} />
             </div>
           </div>
         </div>
