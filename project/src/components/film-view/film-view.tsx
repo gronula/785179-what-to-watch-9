@@ -21,15 +21,9 @@ function FilmView(
   const params = useParams();
   const id = Number(params.id);
   // TODO вынести в useEffect
-  const film = getFilmById(films, id);
-  const {
-    backgroundImage = '',
-    genre = '',
-    name = '',
-    posterImage = '',
-  } = film as Film;
+  const film = getFilmById(films, id) as Film;
   const catalogFilms = films
-    .filter((item) => (item.genre === genre && item.name !== name))
+    .filter((item) => (item.genre === film.genre && item.name !== film.name))
     .slice(0, CATALOG_FILMS_NUMBER);
 
   return (
@@ -38,8 +32,8 @@ function FilmView(
         <div className="film-card__hero">
           <div className="film-card__bg">
             <img
-              src={backgroundImage}
-              alt={name}
+              src={film.backgroundImage}
+              alt={film.name}
             />
           </div>
 
@@ -52,11 +46,11 @@ function FilmView(
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{film.name}</h2>
 
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -90,7 +84,7 @@ function FilmView(
 
                 <Link
                   className="btn film-card__button"
-                  to={`/films/${id}/review`}
+                  to={`/films/${film.id}/review`}
                 >
                   Add review
                 </Link>
@@ -103,8 +97,8 @@ function FilmView(
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
               <img
-                src={posterImage}
-                alt={name}
+                src={film.posterImage}
+                alt={film.name}
                 width="218"
                 height="327"
               />

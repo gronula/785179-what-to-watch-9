@@ -26,7 +26,7 @@ function SmallFilmCard(
     id,
     isActive,
     name,
-    posterImage,
+    previewImage,
     posterSize = 'medium',
     videoLink = '',
   }: SmallFilmCardProps,
@@ -42,7 +42,7 @@ function SmallFilmCard(
       <div className="small-film-card__image">
         <VideoPlayer
           src={videoLink}
-          poster={posterImage}
+          poster={previewImage}
           width={width}
           height={height}
           isActive={isActive}
