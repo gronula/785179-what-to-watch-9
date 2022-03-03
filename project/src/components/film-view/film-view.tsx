@@ -24,10 +24,13 @@ function FilmView(
   const film = getFilmById(films, id);
   const {
     backgroundImage = '',
+    genre = '',
     name = '',
     posterImage = '',
   } = film as Film;
-  const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+  const catalogFilms = films
+    .filter((item) => (item.genre === genre && item.name !== name))
+    .slice(0, CATALOG_FILMS_NUMBER);
 
   return (
     <>
@@ -115,16 +118,20 @@ function FilmView(
       </section>
 
       <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
+        {
+          Boolean(catalogFilms.length) && (
+            <section className="catalog catalog--like-this">
+              <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
-            <FilmsList
-              className="catalog__films-card"
-              films={catalogFilms}
-            />
-          </div>
-        </section>
+              <div className="catalog__films-list">
+                <FilmsList
+                  className="catalog__films-card"
+                  films={catalogFilms}
+                />
+              </div>
+            </section>
+          )
+        }
 
         <footer className="page-footer">
           <Logo theme={LogoTheme.Light} />

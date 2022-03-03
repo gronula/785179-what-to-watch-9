@@ -1,6 +1,10 @@
 import { Film } from '../../types/films';
 
-function FilmDetailsTab(props: Film): JSX.Element {
+function FilmDetailsTab(
+  {
+    genre,
+  }: Film,
+): JSX.Element {
   return (
     <div className="film-card__text film-card__row">
       <div className="film-card__text-col">
@@ -34,7 +38,7 @@ function FilmDetailsTab(props: Film): JSX.Element {
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Genre</strong>
-          <span className="film-card__details-value">Comedy</span>
+          <span className="film-card__details-value">{genre}</span>
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>

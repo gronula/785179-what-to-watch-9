@@ -1,7 +1,8 @@
 export type Film = {
-  backgroundImage?: string;
+  backgroundImage: string;
+  genre: string;
   id: number;
   name: string;
   posterImage: string;
-  videoLink?: string;
+  videoLink: string;
 };
