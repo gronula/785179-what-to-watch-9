@@ -119,7 +119,7 @@ function FilmView(
 
       <div className="page-content">
         {
-          Boolean(catalogFilms.length) && (
+          catalogFilms.length > 0 && (
             <section className="catalog catalog--like-this">
               <h2 className="catalog__title">More like this</h2>
 
