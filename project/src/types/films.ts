@@ -1,9 +1,11 @@
+export type FilmGenre = 'All genres' | 'Comedy' | 'Crime' | 'Adventure' | 'Drama' | 'Action' | 'Thriller' | 'Fantasy';
+
 export type Film = {
   backgroundColor: string;
   backgroundImage: string;
   description: string;
   director: string;
-  genre: string;
+  genre: FilmGenre;
   id: number;
   isFavorite: boolean;
   name: string;
