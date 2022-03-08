@@ -4,6 +4,8 @@ export const RATING_ITEMS = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 export const HOUR_IN_MINUTES = 60;
 
+export const ALL_GENRES = 'All genres';
+
 export const RatingData: RatingItems = {
   Bad: {
     text: 'Bad',
