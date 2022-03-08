@@ -1,7 +1,10 @@
 import React from 'react';
 import { LogoTheme } from '../../const';
-import { Film } from '../../types/films';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setFilmsByGenre, setGenre } from '../../store/action';
+import { Film, FilmGenre } from '../../types/films';
 import FilmsList from '../films-list/films-list';
+import GenresList from '../genres-list/genres-list';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 
@@ -22,7 +25,15 @@ function MainView(
     releaseDate,
   }: MainViewProps,
 ): JSX.Element {
+  const dispatch = useAppDispatch();
+  const { currentGenre, filmsByGenre } = useAppSelector((state) => state);
   const catalogFilms = films.slice(0, CATALOG_FILMS_NUMBER);
+  const filteredFilms = filmsByGenre.slice(0, CATALOG_FILMS_NUMBER);
+
+  const handleGenreChange = (selectedGenre: FilmGenre) => {
+    dispatch(setGenre(selectedGenre));
+    dispatch(setFilmsByGenre(selectedGenre));
+  };
 
   return (
     <>
@@ -97,93 +108,16 @@ function MainView(
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a
-                href="all-genres.html"
-                className="catalog__genres-link"
-              >
-                All genres
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="comedies.html"
-                className="catalog__genres-link"
-              >
-                Comedies
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="crime.html"
-                className="catalog__genres-link"
-              >
-                Crime
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="documentary.html"
-                className="catalog__genres-link"
-              >
-                Documentary
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="dramas.html"
-                className="catalog__genres-link"
-              >
-                Dramas
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="horror.html"
-                className="catalog__genres-link"
-              >
-                Horror
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="kids-family.html"
-                className="catalog__genres-link"
-              >
-                Kids & Family
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="romance.html"
-                className="catalog__genres-link"
-              >
-                Romance
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="sci-fi.html"
-                className="catalog__genres-link"
-              >
-                Sci-Fi
-              </a>
-            </li>
-            <li className="catalog__genres-item">
-              <a
-                href="thrillers.html"
-                className="catalog__genres-link"
-              >
-                Thrillers
-              </a>
-            </li>
-          </ul>
+          <GenresList
+            currentGenre={currentGenre}
+            films={catalogFilms}
+            onChange={handleGenreChange}
+          />
 
           <div className="catalog__films-list">
             <FilmsList
               className="catalog__films-card"
-              films={catalogFilms}
+              films={filteredFilms}
             />
           </div>
 

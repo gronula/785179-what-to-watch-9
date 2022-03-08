@@ -2,8 +2,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundView from '../not-found-view/not-found-view';
 import { AppRoutes } from '../../routes';
 import PrivateRoute from '../private-route/private-route';
-import { AuthorizationStatus } from '../../const';
+import { ALL_GENRES, AuthorizationStatus } from '../../const';
 import { Film } from '../../types/films';
+import { useAppDispatch } from '../../hooks';
+import { setFilmsByGenre } from '../../store/action';
 
 type AppProps = {
   films: Film[];
@@ -20,6 +22,10 @@ function App(
     releaseDate,
   }: AppProps,
 ): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  dispatch(setFilmsByGenre(ALL_GENRES));
+
   return (
     <BrowserRouter>
       <Routes>
